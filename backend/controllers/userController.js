@@ -1,10 +1,27 @@
 import asyncHandler from 'express-async-handler';
+import User from '../models/userModel.js';
 const authUser =asyncHandler(async(req,res)=>{
     res.status(200).json({message:'Auth user'});
 })
 export {authUser};
 const registerUser=asyncHandler(async(req,res)=>{
-    res.status(200).json({message:'Register user'});
+    const {name,email,password,confirmPassword}=req.body;
+    const userExists= await User.findOne({email});
+    if(userExists){
+       return res.status(400).json({message:'User already exists'});
+    }
+    if(password !== confirmPassword){
+        return res.status(400).json({message:'passwords do not same'});
+     }
+    const user=await User.create({
+        name,email,password
+        });
+        if(user){
+          return  res.status(201).json({message:'User created',user});
+            }
+            else{
+                return   res.status(400).json({message:'Invalid user data'});
+            }
 });
 export {registerUser};
 const getUserProfile=asyncHandler(async(req,res)=>{
