@@ -17,5 +17,8 @@ userschema.pre("save",async function(next){
         }
             next()
     })
+userschema.methods.matchPassword=async function (enterPassword){
+    return await bcryptjs.compare(enterPassword,this.password)
+}
 const User=moongose.model("User",userschema)
 export default User;

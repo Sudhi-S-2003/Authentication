@@ -3,10 +3,12 @@ import dotenv from 'dotenv';
 import { NotFound,errorHandler } from './middleware/ErrorMiddleware.js';
 import UserRouter from './routes/userRoutes.js'
 import connectDB from './config/db.js';
+import cookieParser from 'cookie-parser'
 const app =express();
 dotenv.config()
 const port=5000;
 app.use(express.json());
+app.use(cookieParser());
 
 app.get('/',(req,res)=>{
     res.send('Hello World');
