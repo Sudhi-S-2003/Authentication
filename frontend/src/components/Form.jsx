@@ -8,7 +8,7 @@ function CustomForm({ head, data }) {
         <h1 className='fs-2 text-center m-3'>{head}</h1>
         {data.map((item, index) => {
             return (
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3" controlId="formBasicEmail" key={index}>
             <Form.Label>{item.label}</Form.Label>
 
             <Form.Control type={item.type} placeholder={item.placeholder} />

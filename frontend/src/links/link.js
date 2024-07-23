@@ -11,3 +11,16 @@ export const homelink = [
         url: "/login"
     }
 ];
+export const userlink = [
+    {
+        name: "Home",
+        url: ""
+    },
+    {
+        name: "Profile",
+        url: "Profile"
+    },{
+        name: "Product",
+        url: "Product"
+    }
+];

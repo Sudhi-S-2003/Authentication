@@ -1,25 +1,18 @@
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './pages/home';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import UserDashBoard from './pages/UserDashboard';
+import HomeApp from './HomeApp';
+import UserApp from './UserApp';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { homelink } from './links/link.js';
+import NotFound from './pages/404';
+
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar links={homelink} />
-      <div style={{minHeight:"72vh"}}>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/user-dashboard" element={<UserDashBoard />} />
+        <Route path="/*" element={<HomeApp/>} />
+        <Route path="/user/*" element={<UserApp />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-      </div>
-      <Footer links={homelink} />
+      
     </BrowserRouter>
   );
 }

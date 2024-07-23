@@ -14,9 +14,9 @@ function CustomNavbar({links}) {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             {
-                links.map((link)=>{
+                links.map((link,index)=>{
                     return(
-                        <Nav.Link to={link.url} as={Link}>{link.name}</Nav.Link>
+                        <Nav.Link to={link.url} as={Link} key={index}>{link.name}</Nav.Link>
                     )
                 })
             }
