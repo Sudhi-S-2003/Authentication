@@ -40,23 +40,41 @@ const registerUser=asyncHandler(async(req,res)=>{
 });
 export {registerUser};
 const getUserProfile=asyncHandler(async(req,res)=>{
-    res.status(200).json({message:'Get user profile'});
-    })
+    const user=await User.findById(req.user._id);
+    if(user){
+        res.status(200).json(user);
+        }else{
+            res.status(404).json({message:'User not found'});
+        }
+   })
 export {getUserProfile};
 const updateUserProfile=asyncHandler(async(req,res)=>{
-    res.status(200).json({message:'Update user profile'});
-    })
+    const user=await User.findById(req.user._id);
+    if(user){
+        user.name=req.body.name || user.name;
+        user.email=req.body.email || user.email;
+        if(req.body.password){
+            user.password=req.body.password;
+            }
+            await user.save();
+            generateToken(res,user._id);
+            res.status(200).json({message:'User profile updated',user});
+            }else{
+                res.status(404).json({message:'User not found'});
+                }
+                })
 export {updateUserProfile};
 const getAllUsers=asyncHandler(async(req,res)=>{
-    res.status(200).json({message:'Get all users'});
+    const users=await User.find({}).select('-password');
+    res.status(200).json(users);
     })
 export {getAllUsers};
-const getUserById=asyncHandler(async(req,res)=>{
-    res.status(200).json({message:'Get user by id'});
-    })
-export {getUserById};
 const deleteUser=asyncHandler(async(req,res)=>{
-        res.status(200).json({message:'Delete user'});
+    const user=await User.findById(req.params.id);
+    if(user){
+        await user.remove();
+        res.status(200).json({message:'User deleted'});
+    }
         })
  export {deleteUser}
 
