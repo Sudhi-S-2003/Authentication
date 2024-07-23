@@ -1,7 +1,11 @@
+import Form from '../components/Form'
+import { LoginData } from '../data/form'
 
 function Login() {
   return (
-    <div>Login</div>
+    <div>
+<Form head={"login Page"} data={LoginData}/>
+    </div>
   )
 }
 

@@ -1,7 +1,12 @@
+import Form from '../components/Form'
+import { RegisterData } from '../data/form'
 
 function Register() {
   return (
-    <div>Register</div>
+    <div>
+      <Form head={"Register Page"} data={RegisterData}/>
+
+    </div>
   )
 }
 

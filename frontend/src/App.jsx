@@ -5,11 +5,12 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import UserDashBoard from './pages/UserDashboard';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { homelink } from './links/link.js';
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar links={homelink} />
       <div style={{minHeight:"72vh"}}>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -18,7 +19,7 @@ function App() {
         <Route path="/user-dashboard" element={<UserDashBoard />} />
       </Routes>
       </div>
-      <Footer />
+      <Footer links={homelink} />
     </BrowserRouter>
   );
 }

@@ -1,9 +1,10 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { homelink } from '../links/link';
+import { Link } from "react-router-dom"
 
-function CustomNavbar() {
+
+function CustomNavbar({links}) {
   return (
     <div style={{position:"sticky",top:"0",zIndex:"2"}}>
     <Navbar bg="dark" data-bs-theme="dark" expand="lg">
@@ -13,9 +14,9 @@ function CustomNavbar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             {
-                homelink.map((link)=>{
+                links.map((link)=>{
                     return(
-                        <Nav.Link href={link.url}>{link.name}</Nav.Link>
+                        <Nav.Link to={link.url} as={Link}>{link.name}</Nav.Link>
                     )
                 })
             }
