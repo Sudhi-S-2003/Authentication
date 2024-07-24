@@ -12,7 +12,15 @@ export const RegisterData = [
         type: "email",
         placeholder: "Enter your email",
         id: "email"
-    },{
+    },
+    {
+        name :"role",
+        label: "Role",
+        type: "select",
+        options: ["Admin", "User"],
+        id: "role"
+    },
+    {
       name: "password",
       label: "Password",
       type: "password",

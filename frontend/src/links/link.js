@@ -20,7 +20,7 @@ export const userlink = [
         name: "Profile",
         url: "Profile"
     },{
-        name: "Product",
-        url: "Product"
+        name: "Users",
+        url: "Users"
     }
 ];
